@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="test tag," />
+  <meta name="keywords" content="etw,windows," />
 
 
 
@@ -79,15 +79,18 @@
 
 
 
-<meta name="keywords" content="test tag">
+<meta name="description" content="关于etw，大部分非windows的开发者应该都是完全没有听说过。其实etw的本身开发用途是为了让开发者更好的了解操作系统内部情况而开发的监控工具。写作本文的原因在于很少有关于etw的中文文章，并且也很少有与etw开发者进行过交流的作者写作关于etw的相关文章，如果本文帮助您更好的理解etw并且帮助您绕过了etw的一些使用陷阱，那么就再好不过了。   众所周知的windows debug工具其">
+<meta name="keywords" content="etw,windows">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Test Post">
-<meta property="og:url" content="http://yoursite.com/2018/03/13/Test-post/index.html">
+<meta property="og:title" content="ETW 详解与使用">
+<meta property="og:url" content="http://yoursite.com/2018/03/15/ETW-introduction/index.html">
 <meta property="og:site_name" content="HaotingLiu&#39;s tech blog">
+<meta property="og:description" content="关于etw，大部分非windows的开发者应该都是完全没有听说过。其实etw的本身开发用途是为了让开发者更好的了解操作系统内部情况而开发的监控工具。写作本文的原因在于很少有关于etw的中文文章，并且也很少有与etw开发者进行过交流的作者写作关于etw的相关文章，如果本文帮助您更好的理解etw并且帮助您绕过了etw的一些使用陷阱，那么就再好不过了。   众所周知的windows debug工具其">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-16T01:22:10.270Z">
+<meta property="og:updated_time" content="2018-03-21T08:07:19.228Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Test Post">
+<meta name="twitter:title" content="ETW 详解与使用">
+<meta name="twitter:description" content="关于etw，大部分非windows的开发者应该都是完全没有听说过。其实etw的本身开发用途是为了让开发者更好的了解操作系统内部情况而开发的监控工具。写作本文的原因在于很少有关于etw的中文文章，并且也很少有与etw开发者进行过交流的作者写作关于etw的相关文章，如果本文帮助您更好的理解etw并且帮助您绕过了etw的一些使用陷阱，那么就再好不过了。   众所周知的windows debug工具其">
 
 
 
@@ -117,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/13/Test-post/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/15/ETW-introduction/"/>
 
 
 
 
 
-  <title>Test Post | HaotingLiu's tech blog</title>
+  <title>ETW 详解与使用 | HaotingLiu's tech blog</title>
   
 
 
@@ -230,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/13/Test-post/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/ETW-introduction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Haoting Liu">
@@ -247,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Test Post</h1>
+          <h1 class="post-title" itemprop="name headline">ETW 详解与使用</h1>
         
 
         <div class="post-meta">
@@ -259,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-13T23:53:31-07:00">
-                2018-03-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-15T23:31:33-07:00">
+                2018-03-15
               </time>
             
 
@@ -319,7 +322,18 @@
       
 
       
-        
+        <p>  关于etw，大部分非windows的开发者应该都是完全没有听说过。其实etw的本身开发用途是为了让开发者更好的了解操作系统内部情况而开发的监控工具。写作本文的原因在于很少有关于etw的中文文章，并且也很少有与etw开发者进行过交流的作者写作关于etw的相关文章，如果本文帮助您更好的理解etw并且帮助您绕过了etw的一些使用陷阱，那么就再好不过了。</p>
+<p>  众所周知的windows debug工具其实应该是windbg。<strong>但是windbg在debug过程中其实更倾向于静态，而etw则更倾向于动态。</strong> 因为本文其实与windbg并没有什么关系，所以这里就不详细比较两者区别了。ps：这里有个小贴士，如果你使用的是windbg next， 那么你在导入symbol的时候请尽量到windows官网下载相应的symbol文件，不要直接采用windows的symbol服务器。。。。</p>
+<ol>
+<li><p>首先我们来介绍下etw的整体构造<br>1.1. etw session<br> 1.1.1. etw session 的本质<br>etw session的本质，很简单， 就是告诉你 <strong>你所trace的结果将被保存在哪里。</strong><br> 1.1.2. 公有与私有session<br>关于session另一个很重要的属性就是session的<strong>公有（public）和私有（private）</strong>属性。私有的session是非常少见的，而大部分的session都是公有的。除非你在声明StartTrace的property的时候一不小心或者很不小心或者傻逼兮兮的或者有那么百分之一的可能，有意为之，把属性设置成EVENT_TRACE_PRIVATE_LOGGER_MODE才可能让你的session变成private session。</p>
+<p>公有session就是全局session，这种session能够接收到全局所有与它相关的event，而私有session则只能接收到它所在process内的event。<br>1.2 etw trace的两个常用模式与一个非常用模式<br>关于这部分，最重要的文章就是这个：<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa364080%28v=vs.85%29.aspx" target="_blank" rel="noopener">All constants for log mode</a><br> 1.2.1 文件log模式<br> 文件log模式就是将所获得的log内容保存进某个特定的etl file中。一般来说文件log模式在没有特定需求的情况下都是一个相当不错的选择。在内部开发的工具当中，文件log也是一个非常常用的选择。<br> 一般来说在使用文件log方式的时候， EVENT_TRACE_FILE_MODE_NONE是一个非常不错的选择，这个常量选择的弊端在于有可能会产生非常巨大的log文件。<br> EVENT_TRACE_FILE_MODE_SEQUENTIAL也是一个不错的选择，这个选择的问题在于，它并不会按照你所想的停下来。嗯，重复一下。<strong>它并不会按照你想象的停下来。。。。。</strong>通过我查看其他组写的项目与观察我们组所使用的某个工具的行为，我可以负责任的说，这个模式在你按照网络上你能找到的大部分配置中都是不会停下来的。原因很简单，<strong>因为大部分配置都会遗忘配置MaximumFilesSIze这项。</strong>这项内容对于这个模式是不可缺少的。如果这项不配置，那么最后产生的文件就会无比庞大，有多大？<strong>30个G的etl</strong>你们见过么。。。。。。<br> 需要注意的是，在模式选择中，其实可以通过或运算为file mode选择realtime。这样选择的话就还需要注明flushtime保证实时写入文件。这个模式其实是一个非常不错的选择，也是针对某些有特定需求的系统实现realtime的一个选择。<br> 1.2.2 Real time模式<br> real time模式本质上来说就是在提供了一个provider的前提下利用consumer进行对信息的消耗。在这个模式中，我们在声明session的时候必须指明flushtime。其他的设定与file mode没说什么很大区别。<br> 需要注意的一点是，这个模式只能用于public session，对于private session这个模式并不提供相关的支持。<br> 1.2.3 Buffer mode<br> 这个模式不多做介绍，因为我也没使用过。<br>1.3 Etw provider<br>etw在收集log的时候需要设定一个到多个provider的模式进行信息收集。provider与session之间通过EnableTraceEx2 这个函数进行某种程度上的联系。并且通过TraceHandle这个东西与etw的其他部分进行实质上的联系。<br>1.4 etw consumer<br>需要注意的是，几乎只有在real time mode的情况下我们才会使用consumer。但这不意味着consumer只可以应用于real time mode。很多情况下我们也是倾向于使用consumer来处理生成的etl文件。因为如果不使用consumer那么就只能使用xperf之类的软件来完成对etl的解析，这样一来会使整体非常繁琐。<br>etw consumer是一个使用一定设置针对某个trace session进行消耗的消耗者。针对这个组件的一些问题我们会在下一部分统一说明。可以说这个组建的设计是存在很大问题的。</p>
+</li>
+<li><p>etw的整体工作流程<br>针对这个部分我认为还是不要具体细分小部分，最好一气呵成给大家一个整体的印象。建议在涉及到具体组件的时候大家向下一部分的对应组件部分进行详细阅读来了解具体组件功能以及需要注意的地方，当然，如果您想先有个完整印象再来详细看细节也可以在完整阅读本节之后再阅读下一节。<br>首先要开始一个etw session最为重要的一个函数就是StartTrace, 我们需要三个变量来使用这个函数，在这三个变量中，最为重要的是Property变量，这个变量基本定义了所有trace session的选项。<br>在session被启动之后接下来就是初始化provider。针对</p>
+</li>
+<li><p>etw在记录过程中必不可少的元素<br>3.1 EVENT_TRACE_PROPERTIES<br>这个元素出现在StartTrace这个函数的第三个位置。相关的参数中，最为重要的有LogFileMode， LoggerNameOffset这两个，前者可以针对不同的需求设计不同的log模式。后者则是因为设定与LogFileNameOffset有牵连所以说下，一般来说就是session name的长度。而LogFileNameOffset则要接续在它的后面。<br>相关链接<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa363784(v=vs.85" target="_blank" rel="noopener">EVENT_TRACE_PROPERTIES 文档</a>.aspx)</p>
+</li>
+</ol>
+
       
     </div>
     
@@ -336,7 +350,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/test-tag/" rel="tag"># test tag</a>
+            <a href="/tags/etw/" rel="tag"># etw</a>
+          
+            <a href="/tags/windows/" rel="tag"># windows</a>
           
         </div>
       
@@ -431,7 +447,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
