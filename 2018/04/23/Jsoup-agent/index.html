@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Welcome to my world" />
+  <meta name="keywords" content="Jsoup,SpringBoot," />
 
 
 
@@ -79,14 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="1. 关于jsoup的基本介绍  jsoup是一个使用java打开网页的实用工具，有着丰富的功能。我在制作一个crawler的时候使用了jsoup和maven有着很好的结合。 2. jsoup中的agent  本文并不很着重于介绍jsoup的一些相关特性。很多人都写过类似的内容。本文主要解决以下这个问题：  使用 jsoup 打开网页收到 403 错误的解决方法。（为了方便大家能够搜索到文章，我特">
+<meta name="keywords" content="Jsoup,SpringBoot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jsoup Agent 的详解与使用">
+<meta property="og:url" content="http://yoursite.com/2018/04/23/Jsoup-agent/index.html">
 <meta property="og:site_name" content="HaotingLiu&#39;s tech blog">
+<meta property="og:description" content="1. 关于jsoup的基本介绍  jsoup是一个使用java打开网页的实用工具，有着丰富的功能。我在制作一个crawler的时候使用了jsoup和maven有着很好的结合。 2. jsoup中的agent  本文并不很着重于介绍jsoup的一些相关特性。很多人都写过类似的内容。本文主要解决以下这个问题：  使用 jsoup 打开网页收到 403 错误的解决方法。（为了方便大家能够搜索到文章，我特">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-16T01:12:20.000Z">
+<meta property="og:updated_time" content="2018-04-23T20:05:53.437Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Categories">
+<meta name="twitter:title" content="Jsoup Agent 的详解与使用">
+<meta name="twitter:description" content="1. 关于jsoup的基本介绍  jsoup是一个使用java打开网页的实用工具，有着丰富的功能。我在制作一个crawler的时候使用了jsoup和maven有着很好的结合。 2. jsoup中的agent  本文并不很着重于介绍jsoup的一些相关特性。很多人都写过类似的内容。本文主要解决以下这个问题：  使用 jsoup 打开网页收到 403 错误的解决方法。（为了方便大家能够搜索到文章，我特">
 
 
 
@@ -116,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/23/Jsoup-agent/"/>
 
 
 
 
 
-  <title>Categories | HaotingLiu's tech blog</title>
+  <title>Jsoup Agent 的详解与使用 | HaotingLiu's tech blog</title>
   
 
 
@@ -217,40 +221,170 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/23/Jsoup-agent/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Haoting Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HaotingLiu's tech blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">Categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                2 categories in total
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/service/">service</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/windows/">windows</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Jsoup Agent 的详解与使用</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-23T11:01:18-07:00">
+                2018-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/service/" itemprop="url" rel="index">
+                    <span itemprop="name">service</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="1-关于jsoup的基本介绍"><a href="#1-关于jsoup的基本介绍" class="headerlink" title="1. 关于jsoup的基本介绍"></a>1. 关于jsoup的基本介绍</h2><p>  jsoup是一个使用java打开网页的实用工具，有着丰富的功能。我在制作一个crawler的时候使用了jsoup和maven有着很好的结合。</p>
+<h2 id="2-jsoup中的agent"><a href="#2-jsoup中的agent" class="headerlink" title="2. jsoup中的agent"></a>2. jsoup中的agent</h2><p>  本文并不很着重于介绍jsoup的一些相关特性。很多人都写过类似的内容。本文主要解决以下这个问题：<br>  使用 <strong>jsoup</strong> 打开网页收到 <strong>403</strong> 错误的解决方法。（为了方便大家能够搜索到文章，我特别加了两个空格）这个问题可以通过使用agent属性来进行解决。其实虽然说是agent，但其实就是在请求头部分加上一定的信息从而蒙混过关。</p>
+<h2 id="3-解决方法"><a href="#3-解决方法" class="headerlink" title="3. 解决方法"></a>3. 解决方法</h2><p>  使用类似以下语句可以解决问题：<br>  <code>Document document = Jsoup.connect(url).userAgent(&quot;Mozilla&quot;).timeout(10000/*wait up to 2 sec for response*/).get();</code><br>  因为默认的Jsoup会使用java的方式打开网页。这个userAgent可以在请求头部分伪装成mozilla进行请求访问，从而蒙混过关。这个语句的扩展用法还有伪装成mobile或者其他浏览器来进行访问。如果有需求可以进行相关尝试。</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Jsoup/" rel="tag"># Jsoup</a>
+          
+            <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/15/ETW-introduction/" rel="next" title="ETW 详解与使用">
+                <i class="fa fa-chevron-left"></i> ETW 详解与使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -283,8 +417,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -344,6 +487,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-关于jsoup的基本介绍"><span class="nav-number">1.</span> <span class="nav-text">1. 关于jsoup的基本介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-jsoup中的agent"><span class="nav-number">2.</span> <span class="nav-text">2. jsoup中的agent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-解决方法"><span class="nav-number">3.</span> <span class="nav-text">3. 解决方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
