@@ -25,6 +25,8 @@
 
 
 
+  <meta name="google-site-verification" content="XTpo6g1MFQZyg1I1qkU9vRHVeT1FKeD2FBt1JC8_-IM" />
+
 
 
 
@@ -87,7 +89,7 @@
 <meta property="og:site_name" content="HaotingLiu&#39;s tech blog">
 <meta property="og:description" content="1. 关于jsoup的基本介绍  jsoup是一个使用java打开网页的实用工具，有着丰富的功能。我在制作一个crawler的时候使用了jsoup和maven有着很好的结合。 2. jsoup中的agent  本文并不很着重于介绍jsoup的一些相关特性。很多人都写过类似的内容。本文主要解决以下这个问题：  使用 jsoup 打开网页收到 403 错误的解决方法。（为了方便大家能够搜索到文章，我特">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-23T20:05:53.437Z">
+<meta property="og:updated_time" content="2018-04-24T19:33:48.588Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jsoup Agent 的详解与使用">
 <meta name="twitter:description" content="1. 关于jsoup的基本介绍  jsoup是一个使用java打开网页的实用工具，有着丰富的功能。我在制作一个crawler的时候使用了jsoup和maven有着很好的结合。 2. jsoup中的agent  本文并不很着重于介绍jsoup的一些相关特性。很多人都写过类似的内容。本文主要解决以下这个问题：  使用 jsoup 打开网页收到 403 错误的解决方法。（为了方便大家能够搜索到文章，我特">
@@ -258,7 +260,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Haoting Liu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -354,7 +356,8 @@
       
         <h2 id="1-关于jsoup的基本介绍"><a href="#1-关于jsoup的基本介绍" class="headerlink" title="1. 关于jsoup的基本介绍"></a>1. 关于jsoup的基本介绍</h2><p>  jsoup是一个使用java打开网页的实用工具，有着丰富的功能。我在制作一个crawler的时候使用了jsoup和maven有着很好的结合。</p>
 <h2 id="2-jsoup中的agent"><a href="#2-jsoup中的agent" class="headerlink" title="2. jsoup中的agent"></a>2. jsoup中的agent</h2><p>  本文并不很着重于介绍jsoup的一些相关特性。很多人都写过类似的内容。本文主要解决以下这个问题：<br>  使用 <strong>jsoup</strong> 打开网页收到 <strong>403</strong> 错误的解决方法。（为了方便大家能够搜索到文章，我特别加了两个空格）这个问题可以通过使用agent属性来进行解决。其实虽然说是agent，但其实就是在请求头部分加上一定的信息从而蒙混过关。</p>
-<h2 id="3-解决方法"><a href="#3-解决方法" class="headerlink" title="3. 解决方法"></a>3. 解决方法</h2><p>  使用类似以下语句可以解决问题：<br>  <code>Document document = Jsoup.connect(url).userAgent(&quot;Mozilla&quot;).timeout(10000/*wait up to 2 sec for response*/).get();</code><br>  因为默认的Jsoup会使用java的方式打开网页。这个userAgent可以在请求头部分伪装成mozilla进行请求访问，从而蒙混过关。这个语句的扩展用法还有伪装成mobile或者其他浏览器来进行访问。如果有需求可以进行相关尝试。</p>
+<h2 id="3-解决方法"><a href="#3-解决方法" class="headerlink" title="3. 解决方法"></a>3. 解决方法</h2><p>  使用类似以下语句可以解决问题：<br>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Document document = Jsoup.connect(url).userAgent(<span class="string">"Mozilla"</span>).timeout(<span class="number">10000</span><span class="comment">/*wait up to 2 sec for response*/</span>).get();</span><br></pre></td></tr></table></figure></p>
+<p>  因为默认的Jsoup会使用java的方式打开网页。这个userAgent可以在请求头部分伪装成mozilla进行请求访问，从而蒙混过关。这个语句的扩展用法还有伪装成mobile或者其他浏览器来进行访问。如果有需求可以进行相关尝试。</p>
 
       
     </div>
@@ -467,6 +470,10 @@
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Haoting Liu" />
             
               <p class="site-author-name" itemprop="name">Haoting Liu</p>
               <p class="site-description motion-element" itemprop="description"></p>
